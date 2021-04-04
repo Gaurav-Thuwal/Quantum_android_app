@@ -25,6 +25,19 @@ public class AddActivity extends AppCompatActivity {
         expense_amount_input = findViewById(R.id.expense_amount_input);
         add_button = findViewById(R.id.add_button);
 
+        add_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //add data into table on click of button
+                DatabaseHelper databaseHelper = new DatabaseHelper(AddActivity.this);
+                String name = expense_name_input.getText().toString();
+                int amount = Integer.parseInt(expense_amount_input.getText().toString());
+                String date = getDate();
+
+                databaseHelper.addExpense(name,amount,date);
+            }
+        });
+
     }
 
     public String getDate(){

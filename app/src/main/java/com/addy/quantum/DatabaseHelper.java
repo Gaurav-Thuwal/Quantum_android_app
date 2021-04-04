@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -18,8 +19,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_AMOUNT = "expense_amount";
     public static final String COLUMN_DATE = "expense_date";
 
+    private Context context;
+
     public DatabaseHelper(@Nullable Context context) {
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -50,5 +54,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COLUMN_DATE,date);
 
         long result = db.insert(TABLE_NAME,null,contentValues);
+        if(result == -1){
+            Toast.makeText(context,"Failed to update !",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(context,"Successfully updated",Toast.LENGTH_SHORT).show();
+        }
     }
 }

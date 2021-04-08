@@ -1,5 +1,6 @@
 package com.addy.quantum;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int ACTIVITY_REQUEST_CODE = 1;
     private FloatingActionButton add_button;
     private RecyclerView recyclerView;
 
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,AddActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,ACTIVITY_REQUEST_CODE);
             }
         });
 
@@ -54,6 +56,15 @@ public class MainActivity extends AppCompatActivity {
                 expense_amount, expense_date);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));  // my_row layout is LinearLayout
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK){
+            recreate();
+        }
     }
 
     public void getDataInArrayLists(){

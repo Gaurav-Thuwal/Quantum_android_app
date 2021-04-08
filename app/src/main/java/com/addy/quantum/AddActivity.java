@@ -35,6 +35,8 @@ public class AddActivity extends AppCompatActivity {
                 String date = getDate();
 
                 databaseHelper.addExpense(name,amount,date);
+                setResult(RESULT_OK, getIntent());
+                finish();
             }
         });
 

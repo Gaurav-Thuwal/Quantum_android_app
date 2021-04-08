@@ -3,6 +3,7 @@ package com.addy.quantum;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,5 +43,17 @@ public class MainActivity extends AppCompatActivity {
         expense_name = new ArrayList<>();
         expense_amount = new ArrayList<>();
         expense_date = new ArrayList<>();
+    }
+
+    public void getDataInArrayLists(){
+        Cursor cursor = databaseHelper.getAllData();
+
+        // insert data in Lists until full data read from cursor
+        while(cursor.moveToNext()){
+            expense_id.add(cursor.getString(0));
+            expense_name.add(cursor.getString(1));
+            expense_amount.add(cursor.getString(2));
+            expense_date.add(cursor.getString(3));
+        }
     }
 }

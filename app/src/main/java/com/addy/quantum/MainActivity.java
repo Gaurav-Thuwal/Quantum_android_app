@@ -63,7 +63,10 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK){
-            recreate();
+            // Start same activity using intents then finish them. Better than recreate
+            Intent refresh_intent = new Intent(this, MainActivity.class);
+            startActivity(refresh_intent);
+            finish();
         }
     }
 

@@ -9,9 +9,15 @@ import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton add_button;
+
+    // DB variable stuff
+    private DatabaseHelper databaseHelper;
+    private ArrayList<String> expense_id, expense_name, expense_amount, expense_date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,5 +35,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // DB instance init and Lists (which will hold data come from db)
+        databaseHelper = new DatabaseHelper(MainActivity.this);
+        expense_id = new ArrayList<>();
+        expense_name = new ArrayList<>();
+        expense_amount = new ArrayList<>();
+        expense_date = new ArrayList<>();
     }
 }

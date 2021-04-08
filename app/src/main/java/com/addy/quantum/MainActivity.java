@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         expense_name = new ArrayList<>();
         expense_amount = new ArrayList<>();
         expense_date = new ArrayList<>();
+        getDataInArrayLists();
 
         // show data on recycler view using custom adapter and my_row layout
         CustomAdapter customAdapter = new CustomAdapter(MainActivity.this, this, expense_id, expense_name,

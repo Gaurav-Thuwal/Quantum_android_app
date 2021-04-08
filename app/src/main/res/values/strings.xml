@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Quantum</string>
+    <string name="add_expense_activity_label">Add expense</string>
 </resources>

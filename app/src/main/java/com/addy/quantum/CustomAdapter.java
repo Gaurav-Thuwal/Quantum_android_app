@@ -1,5 +1,6 @@
 package com.addy.quantum;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +10,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
 
     private Context context;
+    private Activity activity;
 
-    public CustomAdapter(Context context){
+    // Lists to store data, which will be bind with views
+    private ArrayList<String> expense_id, expense_name, expense_amount, expense_date;
+
+    public CustomAdapter(Activity activity, Context context, ArrayList expense_id, ArrayList expense_name,
+                         ArrayList expense_amount, ArrayList expense_date){
         this.context = context;
+        this.activity = activity;
+        this.expense_id = expense_id;
+        this.expense_name = expense_name;
+        this.expense_amount = expense_amount;
+        this.expense_date = expense_date;
     }
 
     @NonNull
@@ -27,12 +40,17 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
-
+        // Bind data with respective views to show, using CustomViewHolder
+        holder.expense_id_text.setText(expense_id.get(position));
+        holder.expense_name_text.setText(expense_name.get(position));
+        holder.expense_amount_text.setText(expense_amount.get(position));
+        holder.expense_date_text.setText(expense_date.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        // Run adapter expense_id's size time, return size of expense_id list
+        return expense_id.size();
     }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {

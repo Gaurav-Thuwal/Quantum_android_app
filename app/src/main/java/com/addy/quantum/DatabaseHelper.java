@@ -2,6 +2,7 @@ package com.addy.quantum;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -60,5 +61,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else{
             Toast.makeText(context,"Successfully updated",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public Cursor getAllData(){
+        String query = "SELECT * FROM " + TABLE_NAME;
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = null;
+
+        //check whether db is null or not, insert only if not empty
+        if (sqLiteDatabase != null){
+            cursor = sqLiteDatabase.rawQuery(query,null);
+        }
+        return cursor;
     }
 }

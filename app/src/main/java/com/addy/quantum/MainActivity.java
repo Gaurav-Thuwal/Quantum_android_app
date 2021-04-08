@@ -1,6 +1,8 @@
 package com.addy.quantum;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton add_button;
+    private RecyclerView recyclerView;
 
     // DB variable stuff
     private DatabaseHelper databaseHelper;
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         // initialize variables
         add_button = findViewById(R.id.add_button);
+        recyclerView = findViewById(R.id.recycler_view);
 
         // Click listener for floating button
         add_button.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
         expense_name = new ArrayList<>();
         expense_amount = new ArrayList<>();
         expense_date = new ArrayList<>();
+
+        // show data on recycler view using custom adapter and my_row layout
+        CustomAdapter customAdapter = new CustomAdapter(MainActivity.this, this, expense_id, expense_name,
+                expense_amount, expense_date);
+        recyclerView.setAdapter(customAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));  // my_row layout is LinearLayout
     }
 
     public void getDataInArrayLists(){

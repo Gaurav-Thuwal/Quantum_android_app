@@ -74,4 +74,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
+    public void updateExpense(String id, String name, String amount, String date){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        String query = "UPDATE " + TABLE_NAME + " SET " +
+                COLUMN_NAME + " = '" + name + "', " +
+                COLUMN_AMOUNT + " = '" + amount + "', " +
+                COLUMN_DATE + " = '" + date + "' " +
+                " WHERE " + COLUMN_ID + " = " + id + ";";
+
+        sqLiteDatabase.execSQL(query);
+    }
 }

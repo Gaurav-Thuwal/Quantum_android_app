@@ -50,8 +50,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         holder.main_layout.setOnClickListener(new View.OnClickListener() {  // set onclick listener, to open a intent
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, UpdateActivity.class);
+                Intent intent = new Intent(context, UpdateActivity.class);  // Put values from current position
                 intent.putExtra("id", expense_id.get(position));
+                intent.putExtra("name", expense_name.get(position));
+                intent.putExtra("amount", expense_amount.get(position));
                 activity.startActivity(intent);
             }
         });

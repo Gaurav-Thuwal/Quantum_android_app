@@ -51,6 +51,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, UpdateActivity.class);
+                intent.putExtra("id", expense_id.get(position));
                 activity.startActivity(intent);
             }
         });

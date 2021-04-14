@@ -40,7 +40,15 @@ public class UpdateActivity extends AppCompatActivity {
                 expense_name = expense_name_input.getText().toString();
                 expense_amount = expense_amount_input.getText().toString();
                 expense_date = getDate();
-                databaseHelper.updateExpense(expense_id, expense_name, expense_amount, expense_date);
+                boolean updateDone = databaseHelper.updateExpense(expense_id, expense_name, expense_amount, expense_date);
+
+                // Check whether new values are successfully updated or not
+                if(updateDone){
+                    Toast.makeText(UpdateActivity.this,"Successfully Updated :)", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(UpdateActivity.this,"Something went wrong!!", Toast.LENGTH_SHORT).show();
+                }
                 setResult(RESULT_OK, getIntent());
                 finish();
             }

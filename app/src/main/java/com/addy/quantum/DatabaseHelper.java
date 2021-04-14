@@ -3,6 +3,7 @@ package com.addy.quantum;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -74,7 +75,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
-    public void updateExpense(String id, String name, String amount, String date){
+    public boolean updateExpense(String id, String name, String amount, String date){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String query = "UPDATE " + TABLE_NAME + " SET " +
                 COLUMN_NAME + " = '" + name + "', " +
@@ -82,6 +83,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_DATE + " = '" + date + "' " +
                 " WHERE " + COLUMN_ID + " = " + id + ";";
 
-        sqLiteDatabase.execSQL(query);
+        // If something gets wrong return false, else return true
+        try{
+            sqLiteDatabase.execSQL(query);
+            return true;
+        }
+        catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+            return false;
+        }
     }
 }

@@ -2,9 +2,11 @@ package com.addy.quantum;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,6 +47,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         holder.expense_name_text.setText(expense_name.get(position));
         holder.expense_amount_text.setText(expense_amount.get(position));
         holder.expense_date_text.setText(expense_date.get(position));
+        holder.main_layout.setOnClickListener(new View.OnClickListener() {  // set onclick listener, to open a intent
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, UpdateActivity.class);
+                activity.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -57,6 +66,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
         // Views from my_row layout files
         TextView expense_name_text, expense_amount_text, expense_date_text, expense_id_text;
+        LinearLayout main_layout;   // because we want to open update activity on click of an  row
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -64,6 +74,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
             expense_name_text = itemView.findViewById(R.id.expense_name_text);
             expense_amount_text = itemView.findViewById(R.id.expense_amount_text);
             expense_date_text = itemView.findViewById(R.id.expense_date_text);
+            main_layout = itemView.findViewById(R.id.main_layout);
         }
     }
 }

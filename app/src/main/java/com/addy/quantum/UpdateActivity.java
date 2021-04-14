@@ -41,6 +41,8 @@ public class UpdateActivity extends AppCompatActivity {
                 expense_amount = expense_amount_input.getText().toString();
                 expense_date = getDate();
                 databaseHelper.updateExpense(expense_id, expense_name, expense_amount, expense_date);
+                setResult(RESULT_OK, getIntent());
+                finish();
             }
         });
     }

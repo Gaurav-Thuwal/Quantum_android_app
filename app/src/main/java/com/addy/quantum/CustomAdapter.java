@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
 
+    private static final int ACTIVITY_REQUEST_CODE = 1;
     private Context context;
     private Activity activity;
 
@@ -54,7 +55,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
                 intent.putExtra("id", expense_id.get(position));
                 intent.putExtra("name", expense_name.get(position));
                 intent.putExtra("amount", expense_amount.get(position));
-                activity.startActivity(intent);
+                activity.startActivityForResult(intent,ACTIVITY_REQUEST_CODE);
             }
         });
     }

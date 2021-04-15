@@ -33,7 +33,7 @@ public class UpdateActivity extends AppCompatActivity {
         // Method to extract values from intent and then put those values in EditTexts as well as in local String variables
         getAndSetIntentExtra();
 
-        // onclick, send data from EditText to DBHelper class
+        // onclick of update button, send data from EditText to DBHelper class
         update_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +52,23 @@ public class UpdateActivity extends AppCompatActivity {
                 }
                 setResult(RESULT_OK, getIntent());
                 finish();
+            }
+        });
+
+        // onclick of delete button, delete a row from DB using id field
+        delete_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseHelper databaseHelper = new DatabaseHelper(UpdateActivity.this);
+                boolean isDeleted = databaseHelper.deleteExpense(expense_id);
+
+                // Check whether required row is deleted or not
+                if(isDeleted){
+                    Toast.makeText(UpdateActivity.this, "Successfully deleted :)",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(UpdateActivity.this, "Failed to delete :(",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

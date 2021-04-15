@@ -69,6 +69,8 @@ public class UpdateActivity extends AppCompatActivity {
                 else{
                     Toast.makeText(UpdateActivity.this, "Failed to delete :(",Toast.LENGTH_SHORT).show();
                 }
+                setResult(RESULT_OK, getIntent());
+                finish();
             }
         });
     }

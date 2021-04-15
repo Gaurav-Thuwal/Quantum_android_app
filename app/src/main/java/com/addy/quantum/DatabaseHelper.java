@@ -93,4 +93,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+    // Method to delete a row by given id
+    public boolean deleteExpense(String id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        String query = "DELETE FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = " + id;
+        try{
+            sqLiteDatabase.execSQL(query);
+            return true;
+        }
+        catch (SQLException sqlException){
+            sqlException.printStackTrace();
+            return false;
+        }
+    }
 }

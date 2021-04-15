@@ -44,7 +44,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
         // Bind data with respective views to show, using CustomViewHolder
-        holder.expense_id_text.setText(expense_id.get(position));
+        //holder.expense_id_text.setText(expense_id.get(position));     // Don't bind data to id EditText as of now
         holder.expense_name_text.setText(expense_name.get(position));
         holder.expense_amount_text.setText(expense_amount.get(position));
         holder.expense_date_text.setText(expense_date.get(position));
@@ -69,12 +69,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public class CustomViewHolder extends RecyclerView.ViewHolder {
 
         // Views from my_row layout files
-        TextView expense_name_text, expense_amount_text, expense_date_text, expense_id_text;
+        TextView expense_name_text, expense_amount_text, expense_date_text; // expense_id_text (don't use as of now)
         LinearLayout main_layout;   // because we want to open update activity on click of an  row
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
-            expense_id_text = itemView.findViewById(R.id.expense_id_text);
+            //expense_id_text = itemView.findViewById(R.id.expense_id_text);    // Don't use id EditText as of now
             expense_name_text = itemView.findViewById(R.id.expense_name_text);
             expense_amount_text = itemView.findViewById(R.id.expense_amount_text);
             expense_date_text = itemView.findViewById(R.id.expense_date_text);

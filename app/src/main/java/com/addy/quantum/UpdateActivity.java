@@ -14,7 +14,7 @@ import java.util.Date;
 public class UpdateActivity extends AppCompatActivity {
 
     private EditText expense_name_input, expense_amount_input;
-    private Button update_button;
+    private Button update_button, delete_button;
 
     // To store values from intent string extra
     private String expense_id, expense_name, expense_amount, expense_date;
@@ -28,6 +28,7 @@ public class UpdateActivity extends AppCompatActivity {
         expense_name_input = findViewById(R.id.expense_name_input);
         expense_amount_input = findViewById(R.id.expense_amount_input);
         update_button = findViewById(R.id.update_button);
+        delete_button = findViewById(R.id.delete_button);
 
         // Method to extract values from intent and then put those values in EditTexts as well as in local String variables
         getAndSetIntentExtra();

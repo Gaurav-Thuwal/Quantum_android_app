@@ -1,7 +1,10 @@
 package com.addy.quantum;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
@@ -20,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
     private static final int ACTIVITY_REQUEST_CODE = 1;
     private FloatingActionButton add_button;
     private RecyclerView recyclerView;
+    private NavigationView navigation_view;
+    private Toolbar toolbar;
+    private DrawerLayout drawer_main;
+    private ActionBarDrawerToggle toggle;
 
     // DB variable stuff
     private DatabaseHelper databaseHelper;
@@ -33,6 +41,18 @@ public class MainActivity extends AppCompatActivity {
         // initialize variables
         add_button = findViewById(R.id.add_button);
         recyclerView = findViewById(R.id.recycler_view);
+        toolbar = findViewById(R.id.toolbar);
+        navigation_view = findViewById(R.id.navigation_view);
+        drawer_main = findViewById(R.id.drawer_main);
+
+        // Set our custom toolbar as action bar
+        setSupportActionBar(toolbar);
+
+        // Make toggle button to respond opening and closing of Drawer
+        toggle = new ActionBarDrawerToggle(this, drawer_main, toolbar, R.string.open_drawer, R.string.close_drawer);
+        drawer_main.addDrawerListener(toggle);      // Set drawer listener to listen toggle
+        toggle.syncState();     // Animate icon for navigation
+
 
         // Click listener for floating button
         add_button.setOnClickListener(new View.OnClickListener() {

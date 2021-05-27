@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Quantum</string>
     <string name="add_expense_activity_label">Add expense</string>
+
+    <!-- String for navigation drawer opening and closing -->
+    <string name="open_drawer">Open drawer</string>
+    <string name="close_drawer">Close drawer</string>
 </resources>

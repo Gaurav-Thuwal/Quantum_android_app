@@ -13,6 +13,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private DrawerLayout drawer_main;
     private ActionBarDrawerToggle toggle;
+    private TextView total_amount;
 
     // DB variable stuff
     private DatabaseHelper databaseHelper;
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         navigation_view = findViewById(R.id.navigation_view);
         drawer_main = findViewById(R.id.drawer_main);
+        total_amount = findViewById(R.id.total_amount);
 
         // Set our custom toolbar as action bar
         setSupportActionBar(toolbar);
@@ -70,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         expense_amount = new ArrayList<>();
         expense_date = new ArrayList<>();
         getDataInArrayLists();
+        total_amount.setText(databaseHelper.getTotalAmount());      // get and set total amount from database
 
         // show data on recycler view using custom adapter and my_row layout
         CustomAdapter customAdapter = new CustomAdapter(MainActivity.this, this, expense_id, expense_name,

@@ -107,4 +107,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+    // Method to get total amount from table
+    public String getTotalAmount(){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT SUM(" + COLUMN_AMOUNT + ") as Total FROM " + TABLE_NAME ;
+        if(sqLiteDatabase != null){
+            Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+            cursor.moveToFirst();       // let's move cursor for first value
+            String total_amount = cursor.getString((cursor.getColumnIndex("Total")));
+            cursor.close();
+            return "Rs. " + total_amount;
+        }
+        return "Rs. 0";
+    }
 }

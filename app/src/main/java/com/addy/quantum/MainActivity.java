@@ -1,9 +1,11 @@
 package com.addy.quantum;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,9 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -56,6 +60,26 @@ public class MainActivity extends AppCompatActivity {
         drawer_main.addDrawerListener(toggle);      // Set drawer listener to listen toggle
         toggle.syncState();     // Animate icon for navigation
 
+        // Click listener for navigation items and set "Today" options as checked already
+        navigation_view.setCheckedItem(R.id.menu_today);
+        navigation_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.menu_yesterday:
+                        Toast.makeText(MainActivity.this, "Yesterday", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.menu_this_month:
+                        Toast.makeText(MainActivity.this, "This month", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.menu_today:
+                        Toast.makeText(MainActivity.this, "Today", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                drawer_main.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
 
         // Click listener for floating button
         add_button.setOnClickListener(new View.OnClickListener() {

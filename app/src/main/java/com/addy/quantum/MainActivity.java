@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId()){
                     case R.id.menu_yesterday:
+                        Intent yesterday = new Intent(MainActivity.this, YesterdayActivity.class);
+                        startActivity(yesterday);
                         Toast.makeText(MainActivity.this, "Yesterday", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.menu_this_month:

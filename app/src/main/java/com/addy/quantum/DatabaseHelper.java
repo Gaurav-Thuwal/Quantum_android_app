@@ -75,6 +75,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
+
+    public Cursor getAllData(String date){
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_DATE + " = \"" + date + "\"";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = null;
+
+        //check whether db is null or not, insert only if not empty
+        if (sqLiteDatabase != null){
+            cursor = sqLiteDatabase.rawQuery(query,null);
+        }
+        return cursor;
+    }
     public boolean updateExpense(String id, String name, String amount, String date){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String query = "UPDATE " + TABLE_NAME + " SET " +

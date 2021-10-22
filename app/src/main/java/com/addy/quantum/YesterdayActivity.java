@@ -45,7 +45,7 @@ public class YesterdayActivity extends AppCompatActivity {
         expense_amount = new ArrayList<>();
         expense_date = new ArrayList<>();
         getDataInArrayLists();
-        totalAmount.setText(databaseHelper.getTotalAmount());      // get and set total amount from database
+        totalAmount.setText(databaseHelper.getTotalAmount(gePreviousDate()));      // get and set total amount from database
 
         // show data on recycler view using custom adapter and my_row layout
         CustomAdapter customAdapter = new CustomAdapter(YesterdayActivity.this, this, expense_id, expense_name,

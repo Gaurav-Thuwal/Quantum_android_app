@@ -133,4 +133,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return "Rs. 0";
     }
+
+    // Method to get total amount from table for specific date
+    public String getTotalAmount(String date){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        // Get values for specific date using where clause
+        String query = "SELECT SUM(" + COLUMN_AMOUNT + ") as Total FROM " + TABLE_NAME +
+                " WHERE " + COLUMN_DATE + " = \"" + date + "\"";
+        if(sqLiteDatabase != null){
+            Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+            cursor.moveToFirst();       // let's move cursor for first value
+            String total_amount = cursor.getString((cursor.getColumnIndex("Total")));
+            cursor.close();
+            return "Rs. " + total_amount;
+        }
+        return "Rs. 0";
+    }
 }

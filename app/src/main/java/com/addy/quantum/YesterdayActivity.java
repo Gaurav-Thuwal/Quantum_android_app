@@ -37,6 +37,7 @@ public class YesterdayActivity extends AppCompatActivity {
 
         // Set our custom toolbar as action bar
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // DB instance init and Lists (which will hold data come from db)
         databaseHelper = new DatabaseHelper(YesterdayActivity.this);

@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Yesterday", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.menu_this_month:
+                        Intent thisMonth = new Intent(MainActivity.this, ThisMonthActivity.class);
+                        startActivityForResult(thisMonth, ACTIVITY_REQUEST_CODE);
                         Toast.makeText(MainActivity.this, "This month", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.menu_today:

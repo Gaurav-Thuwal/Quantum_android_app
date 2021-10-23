@@ -11,7 +11,8 @@
         android:theme="@style/Theme.Quantum">
         <activity
             android:name=".ThisMonthActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".YesterdayActivity"
             android:exported="true"

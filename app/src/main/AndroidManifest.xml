@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Quantum">
         <activity
+            android:name=".ThisMonthActivity"
+            android:exported="false" />
+        <activity
             android:name=".YesterdayActivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".UpdateActivity" />
         <activity
             android:name=".AddActivity"

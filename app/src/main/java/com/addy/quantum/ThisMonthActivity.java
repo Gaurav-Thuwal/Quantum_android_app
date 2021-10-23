@@ -56,7 +56,8 @@ public class ThisMonthActivity extends AppCompatActivity {
 
     // Method to get data from our database and put them into ArrayLists
     private void getDataInArrayLists(){
-        Cursor cursor = databaseHelper.getAllData(getCurrentMonthDate());
+        // Set forMonthOnly argument as true, because we need data of current month
+        Cursor cursor = databaseHelper.getAllData(getCurrentMonthDate(), true);
 
         // insert data in Lists until full data read from cursor
         while(cursor.moveToNext()){

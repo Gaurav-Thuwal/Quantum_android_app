@@ -76,8 +76,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Cursor getAllData(String date){
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_DATE + " = \"" + date + "\"";
+    // Method to get All data depending on given date or month
+    public Cursor getAllData(String date, boolean forMonthOnly){
+        // Check if method is called to get data for month or "yesterday", prepare query accordingly
+        String query = "";
+        if(!forMonthOnly){
+            // Prepare query to give data of "yesterday's" date
+            query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_DATE + " = \"" + date + "\"";
+        } else {
+            // Prepare query to give data of current month
+            query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_DATE + " LIKE \"%/" + date + "\"";
+        }
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         Cursor cursor = null;
 
@@ -87,6 +96,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
+
     public boolean updateExpense(String id, String name, String amount, String date){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String query = "UPDATE " + TABLE_NAME + " SET " +

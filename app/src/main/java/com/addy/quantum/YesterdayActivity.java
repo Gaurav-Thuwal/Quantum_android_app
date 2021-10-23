@@ -56,7 +56,8 @@ public class YesterdayActivity extends AppCompatActivity {
     }
 
     private void getDataInArrayLists(){
-        Cursor cursor = databaseHelper.getAllData(gePreviousDate());
+        // Set forMonthOnly argument as false, because we need data according to previous date
+        Cursor cursor = databaseHelper.getAllData(gePreviousDate(), false);
 
         // insert data in Lists until full data read from cursor
         while(cursor.moveToNext()){

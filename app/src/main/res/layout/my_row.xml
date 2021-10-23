@@ -11,7 +11,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp">
+        android:layout_marginEnd="12dp"
+        style="@style/customCard"
+        android:backgroundTint="@color/little_bit"
+        app:cardElevation="4dp">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,9 +39,10 @@
                 android:id="@+id/expense_name_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:text="Expense Name"
-                android:textColor="#000000"
-                android:textSize="20sp"
+                android:textColor="@color/card_text_color"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -47,6 +51,7 @@
                 android:id="@+id/expense_date_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="Date"
                 app:layout_constraintStart_toStartOf="@+id/expense_name_text"
                 app:layout_constraintTop_toBottomOf="@+id/expense_name_text" />
@@ -56,6 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rs."
+
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -64,10 +70,13 @@
                 android:id="@+id/expense_amount_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:text="120"
+                android:textColor="@color/amount_text_color"
+                android:textSize="22sp"
                 android:textStyle="bold"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/rs_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rs_text" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,17 +9,17 @@
     <color name="white">#FFFFFFFF</color>
 
     <!-- New colors (temp) -->
-    <color name="primary">#009688</color>
-    <color name="primary_dark">#00796B</color>
-    <color name="primary_light">#D1ECE9</color>
-    <color name="accent">#FF5722</color>
-    <color name="primary_text">#212121</color>
+    <color name="primary">#271D24</color>
+    <color name="primary_dark">#1E161B</color>
+    <color name="primary_light">#33252F</color>
+    <color name="accent">#79BA380F</color>
+    <color name="primary_text">#B6B6B6</color>
     <color name="secondary_text">#757575</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
-    <color name="little_bit">#EBF1F0</color>
+    <color name="little_bit">#3A2A35</color>
 
-    <color name="card_text_color">#3A3939</color>
-    <color name="card_background">#FFFFFF</color>
-    <color name="amount_text_color">#E34E20</color>
+    <color name="card_text_color">#B381A2</color>
+    <color name="card_background">#473441</color>
+    <color name="amount_text_color">#BD5F41</color>
 </resources>

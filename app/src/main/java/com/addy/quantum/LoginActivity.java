@@ -59,6 +59,10 @@ public class LoginActivity extends AppCompatActivity {
             password_input.setVisibility(View.INVISIBLE);
             logged_in_text.setVisibility(View.VISIBLE);
             logout_button.setVisibility(View.VISIBLE);
+
+            // Show email of signed account
+            String email_string = firebaseAuth.getCurrentUser().getEmail()+" : Signed in";
+            logged_in_text.setText(email_string);
         }
 
         // login button functionality
@@ -106,8 +110,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Log out the current user on tap of logout button
+                String currentUserEmail = firebaseAuth.getCurrentUser().getEmail();
                 firebaseAuth.signOut();
-                Toast.makeText(LoginActivity.this, "Account logged out", Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, currentUserEmail + " signed out", Toast.LENGTH_LONG).show();
 
                 // And make all login items visible and logout items invisible
                 loginAccountText.setVisibility(View.VISIBLE);

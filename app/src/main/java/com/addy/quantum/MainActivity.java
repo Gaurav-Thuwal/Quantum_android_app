@@ -82,6 +82,11 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.menu_login:
                         Intent login = new Intent(MainActivity.this, LoginActivity.class);
                         startActivityForResult(login, ACTIVITY_REQUEST_CODE);
+                        break;
+                    case R.id.menu_upload:
+                        Intent upload = new Intent(MainActivity.this, UploadActivity.class);
+                        startActivity(upload);
+                        break;
                 }
                 drawer_main.closeDrawer(GravityCompat.START);
                 return true;

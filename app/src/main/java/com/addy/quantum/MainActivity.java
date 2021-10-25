@@ -79,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.menu_today:
                         Toast.makeText(MainActivity.this, "Today", Toast.LENGTH_SHORT).show();
                         break;
+                    case R.id.menu_login:
+                        Intent login = new Intent(MainActivity.this, LoginActivity.class);
+                        startActivityForResult(login, ACTIVITY_REQUEST_CODE);
                 }
                 drawer_main.closeDrawer(GravityCompat.START);
                 return true;

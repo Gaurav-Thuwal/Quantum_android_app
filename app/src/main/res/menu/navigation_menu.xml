@@ -11,4 +11,11 @@
             android:id="@+id/menu_this_month"
             android:title="This month"/>
     </group>
+    <item android:title="Account">
+        <menu>
+            <item
+                android:id="@+id/menu_login"
+                android:title="Login" />
+        </menu>
+    </item>
 </menu>

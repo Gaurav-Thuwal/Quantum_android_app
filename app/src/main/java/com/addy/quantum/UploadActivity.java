@@ -27,6 +27,7 @@ public class UploadActivity extends AppCompatActivity {
     // Firebase stuff
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
+    boolean uploadSuccessful = true;  // flag to check whether upload is successful or not, set as true by default
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +78,19 @@ public class UploadActivity extends AppCompatActivity {
                 public void onFailure(@NonNull Exception e) {
                     // This method gets trigger when data is failed to save in firebase database, show toast accordingly
                     Toast.makeText(UploadActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+
+                    // update wasSuccessful to false, to show that upload was not successful
+                    uploadSuccessful = false;
                 }
             });
+        }
+
+        // Show toast according to upload status
+        if(uploadSuccessful){
+            Toast.makeText(UploadActivity.this, "Successfully saved data to cloud", Toast.LENGTH_LONG).show();
+            finish();
+        } else {
+            Toast.makeText(UploadActivity.this, "Failed to save the data to cloud", Toast.LENGTH_SHORT).show();
         }
     }
 }

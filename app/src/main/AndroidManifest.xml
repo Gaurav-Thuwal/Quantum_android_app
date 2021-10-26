@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Quantum">
         <activity
+            android:name=".UploadActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".SignUpActivity"
             android:exported="false"
-            android:parentActivityName=".LoginActivity"/>
+            android:parentActivityName=".LoginActivity" />
         <activity
             android:name=".LoginActivity"
             android:exported="false"

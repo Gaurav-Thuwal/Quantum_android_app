@@ -5,4 +5,7 @@
     <!-- String for navigation drawer opening and closing -->
     <string name="open_drawer">Open drawer</string>
     <string name="close_drawer">Close drawer</string>
+
+    <!-- Custom strings -->
+    <string name="upload_desc">Save your expenses to cloud.\nMake them accessible after re-install.</string>
 </resources>

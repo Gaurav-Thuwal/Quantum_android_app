@@ -16,6 +16,9 @@
             <item
                 android:id="@+id/menu_login"
                 android:title="Login" />
+            <item
+                android:id="@+id/menu_upload"
+                android:title="Upload" />
         </menu>
     </item>
 </menu>

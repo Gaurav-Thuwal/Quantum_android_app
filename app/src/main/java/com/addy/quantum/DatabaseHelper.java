@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "Expenses.db";
@@ -158,5 +160,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return "Rs. " + total_amount;
         }
         return "Rs. 0";
+    }
+
+    // Method to insert data in local storage from list data from cloud
+    public void addCloudExpenses(ArrayList<Expense> cloudExpenses){
+        // COde to implement
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+        // iterate over list and insert one by one
+        for(Expense expense : cloudExpenses){
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(COLUMN_ID, expense.get_id());
+            contentValues.put(COLUMN_NAME, expense.getExpense_name());
+            contentValues.put(COLUMN_AMOUNT, expense.getExpense_amount());
+            contentValues.put(COLUMN_DATE, expense.getExpense_date());
+
+            try {
+                long result = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
+            } catch (Exception e){
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+        }
     }
 }
